@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>UTP众筹交易所</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+	<link rel="stylesheet" href="/css/alertify.css">
+	<script
+		src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous">
+	</script>
+	<style>
+		.app.testframe .buy,
+		.app.testframe .sell,
+		.app.testframe .transfer {
+			text-align: center;
+		}
+
+		.app.testframe .buy input,
+		.app.testframe .sell input,
+		.app.testframe .transfer input {
+			text-align: center;
+			font-size:25px;
+		}
+
+		.no-padding {
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+
+		.approx {
+			font-size: 22px;
+		    font-style: italic;
+		    color: #949494;
+		}
+
+		.app.interface {
+			
+		}
+
+		.app.interface.loaded {
+			display: initial;
+		}
+
+		.app.stats.bubble span {
+			display: block;
+		}
+		.app.stats.bubble span.count {
+			margin-top: 12px;
+			font-size: 32px;
+			font-style: italic;
+		}
+		.app.stats.bubble span.identifier {
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.app.stats.bubble span.identifier .soft {
+			font-weight: 300;
+			font-size: 15px;
+		}
+		.app.stats.bubble span.converted {
+			margin-top: 10px;
+		}
+		.app.stats.textual {
+			text-align: center;
+		}
+		.app.stats.textual span {
+			display: block;
+			font-size: 18px;
+			margin-bottom: 15px;
+		}
+		.app.stats.textual span img {
+			background: #eadfdf;
+			padding: 5px;
+			margin: 0 auto;
+			width: 60px;
+		}
+		.actions .button {
+			margin-bottom: 15px;
+			width: 100%;
+		}
+
+		.masternode.hidden{
+			display: none !important;
+		}
+
+		.masternode img {
+			width: 115px;
+		}
+
+		.masternode h2 {
+			font-weight: bold;
+			font-style: italic;
+		}
+
+		.masternode p {
+			padding-bottom: 15px;
+		}
+		.masternode .link span {
+			font-size: 22px;
+			display: block;
+			padding-bottom: 13px;
+		}
+		.masternode .link a {
+			font-size: 25px;
+		}
+		.buy .button,
+		.sell .button {
+			width: 100%;
+		}
+		.buy .six.wide.column,
+		.sell .six.wide.column {
+			text-align: center !important;
+		}
+		.buy .six.wide.column .buyPrice,
+		.buy .six.wide.column .sellPrice,
+		.sell .six.wide.column .buyPrice,
+		.sell .six.wide.column .sellPrice {
+			display: block;
+			font-size: 20px;
+			padding-bottom: 5px;
+		}
+		.transfer p {
+			text-align: center;
+		}
+		.transfer button {
+			width: 100%;
+		}
+		.transfer input {
+			height: 50px;
+			font-size: 20px !important;
+		}
+
+	</style>
+</head>
+<body>
+	<ui class="ui centered grid container intro" style="margin-top:50px;">
+		<div class="row">
+			<div class="column" style="text-align: center;">
+			<h2 class="ui header">
+			  <img="img/powh.png"</img>
+			  <img src="img/powh.png">
+			  <div class="sub header">UTP众筹交易所3D智能合约入口,正式版<a href="http://chunchou.com">chunchou.com</a></div>
+			  <div class="sub header">网站访问量有可能下降，交易频率有可能减低，但以太坊智能合约永远不会被关停。</div>
+			  <div class="sub header">通过本网站的智能合约接口可安全的查看你的分红。</div>
+			  <div class="sub header">欢迎加入官方QQ群592486473，免费领取5Kyes,让我们一起成长。</div>
+			  <div class="sub header">官方电报群https://t.me/lasthero3d，欢迎加入</div>
+			  <div class="sub header">如果你第一次使用Metamask,<a href="https://ext.se.360.cn/webstore/detail/oabhjghcijfomlcmkjbbhakkdimfbemc">钱包下载地址</a>, 可查看 <a href="https://blog.csdn.net/niumenglong1/article/details/81274923">教程</a></div>
+			  <div class="sub header">直接将eth转入合约地址0x82d1a1546Ec0d9f883948D1a5d5CFa6408Ed75D1，</div>
+			  <div class="sub header">也可以直接购买UTP,gas limit 请设置150000以上以确保交易正确打包</div>
+			</h2>
+			</div>
+		</div>
+		
+	</ui>
+<!-- 	<div class="ui grid container app loader">
+		<div class="column">
+			<h1 class="ui header">
+				Loading...
+			</h1>
+		</div>
+	</div> -->
+	<div class="ui grid container app interface">
+		<div class="column">
+			<div class="ui raised segment">
+				<div class="ui grid app testframe">
+					<div class="row">
+						<div class="column masternode hidden" style="text-align: center;">
+							<h2>你当前正确的运行了一个 <a id="masternode-link" href="/?masternode=0x">主节点</a>.</h2>
+							<img src="https://cdn.discordapp.com/attachments/409611939585720321/416791323635613696/ahhh-shit-browsers4.gif" alt="">
+							<!--<p>You are currently holding 100 or more tokens, this means you're now running a Masternode! <br> You receive <strong>30% of the dividends</strong> made by anyone purchasing tokens with your masternode link.</p> -->
+							<p>你当前有可以运行一个自己的主节点! <br> 你会收到 <strong>33%的提成费用</strong> 如果你推荐的用户给该智能合约付款!</p>
+							<div class="link">
+								<span>你独一无二的主节点链接是</span>
+								<a href="/?masternode=0x">https://chunchou.com/buy.html?masternode=0x123456</a>
+							</div>
+							<div class="ui divider"></div>
+						</div>
+					</div>
+					<div class="two column row divided">
+						<div class="column buy">
+							<h2 class="ui aligned icon header">
+							  <img src="img/buy.png" alt="">
+							  购买
+							</h2>
+							<p>单位 = eth </p>
+							<p>由于以太坊网络拥堵，请使用2gwei以上的燃气价格。</p>
+							<div class="ui divider"></div>
+							<div class="ui centered grid">
+								<div class="row">
+									<div class="six wide column">
+										<span class="buyPrice">1234/UTP</span>
+										<form class="ui form">
+											<div class="field">
+												<input type="text" name="first-name" placeholder="0.05">
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="row no-padding">
+									<div class="column" style="text-align: center;">
+										<span class="approx">输入购买金额..</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="six wide column">
+										<button class="ui right labeled massive icon button">
+											<i class="right arrow icon"></i>
+											购买
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="column sell">
+							<h2 class="ui aligned icon header">
+							  <img src="img/sell.png" alt="">
+							  出售
+							</h2>
+							<p>单位 = UTP.</p>
+							<p>由于以太坊网络拥堵，请使用2gwei以上的燃气价格。</p>
+							<p></p>
+							<div class="ui divider"></div>
+							<div class="ui centered grid">
+								<div class="row">
+									<div class="six wide column">
+										<span class="sellPrice">1234/UTP</span>
+										<form class="ui form">
+											<div class="field">
+												<input type="text" name="first-name" placeholder="25">
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="row no-padding">
+									<div class="column" style="text-align: center;">
+										<span class="approx">输入出售数量..</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="six wide column">
+										<button class="ui right labeled massive icon button">
+											<i class="right arrow icon"></i>
+											出售
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ui divider"></div>
+				<div class="ui grid">
+					<div class="row">
+						<div class="column" style="text-align: center;">
+							<h2 class="ui header">
+								份额
+							</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column">
+							<div class="ui internally celled grid">
+								<div class="three column row">
+									<div class="column">
+										<div class="ui grid">
+											<div class="row no-padding">
+												<div class="column" style="text-align: center;">
+													<h2 class="ui header">
+														全局
+													</h2>
+												</div>
+											</div>
+										    <div class="row">
+										    	<div class="column app stats textual">
+
+													<span class="eth">
+														<img class="ui medium circular image" src="https://i.imgur.com/pTht7qE.png">
+														<b id="ethInContract">- 以太坊</b> 在合约中。
+													</span>
+													<span class="tokens">
+														<img class="ui medium circular image" src="https://media.discordapp.net/attachments/401301420575293440/415274787578052618/PowH_Logo_V2_Glow_Final_Concept_invert.png?width=522&height=576">
+														<b id="tokensInCirculation">- UTP</b> 流通中。
+													</span>
+											    </div>
+										    </div>
+										</div>
+									</div>
+								    <div class="column">
+								    	<div class="ui grid">
+											<div class="row no-padding">
+												<div class="column" style="text-align: center;">
+													<h2 class="ui header">
+														钱包
+													</h2>
+												</div>
+											</div>
+										    <div class="row">
+										    	<div class="column eight wide app stats bubble" id="myTokens">
+													<div class="ui circular segment">
+														<span class="identifier">UTP <span class="soft">(Utopia)</span></span>
+														<span class="count">-</span>
+														<span class="converted">(-美元)</span>
+
+													</div>
+											    </div>
+											    <div class="column eight wide app stats bubble" id="myDividends">
+													<div class="ui circular segment">
+														<span class="identifier">分红 <span class="soft">(ETH)</span></span>
+														<span class="count">-</span>
+														<span class="converted">(-美元)</span>
+
+													</div>
+											    </div>
+										    </div>
+										</div>
+								    </div>
+								    <div class="column actions">
+								    	<div class="ui grid">
+											<div class="row no-padding">
+												<div class="column" style="text-align: center;">
+													<h2 class="ui header">
+														操作
+													</h2>
+												</div>
+											</div>
+										    <div class="row">
+										    	<div class="column">
+								    					<button id="reinvest" class="ui huge button">将分红再投资</button>
+								    	<button id="withdraw" class="ui huge button">分红提现</button>
+								    	<a href="https://ropsten.etherscan.io/address/0x82d1a1546Ec0d9f883948D1a5d5CFa6408Ed75D1" target="_new"><button class="ui huge button">查看合约</button></a>
+								    				</div>
+										    </div>
+										</div>
+								    </div>
+								  </div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="column transfer">
+							<div class="ui divider"></div>
+							<h2 class="ui aligned icon header">
+							  <i class="circular inverted blue exchange alternate icon"></i>
+							  转移
+							</h2>
+							<p>单位 = UTP: 请注意，发送UTP之前请取回你的分红。!</p>
+							<div class="ui divider"></div>
+							<div class="ui centered grid">
+								<div class="row">
+									<div class="six wide column">
+										<form class="ui form">
+											<div class="field">
+												<input type="text" id="transferAddress" placeholder="地址..">
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="row">
+									<div class="six wide column">
+										<form class="ui form">
+											<div class="field">
+												<input type="text" id="transferTokenCount" placeholder="数量..">
+											</div>
+										</form>
+									</div>
+								</div>
+								<div class="row no-padding">
+									<div class="column" style="text-align: center;">
+										<span class="approx">输入以太坊地址和UTP数量..</span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="six wide column">
+										<button class="ui right labeled massive icon button">
+											<i class="right arrow icon"></i>
+											转移
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="ui active inverted dimmer" id="loadingSpinner">
+				     <div class="ui massive text loader" id="loadingText">正在连接 metamask...<br>
+					 <noscript>运行这个网页程序需要JavaScript。</noscript></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/lib/ls.js"></script>
+	<script src="/lib/alertify.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.5.1/bluebird.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js"></script>
+	<script src="/lib/web3.min.js"></script>
+  	<script src="/lib/buy.js"></script>
+	
+</body>
+</html>
