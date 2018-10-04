@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>FUS 正式版众筹平台</title>
+	<title>UTP众筹交易所</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
 	<link rel="stylesheet" href="/css/alertify.css">
 	<script
@@ -141,8 +141,14 @@
 			<h2 class="ui header">
 			  <img="img/powh.png"</img>
 			  <img src="img/powh.png">
-			  <div class="sub header">直接将eth转入合约地址0x328C56A62768913b845c7864d46941c46b93d475，</div>
-			  <div class="sub header">也可以直接购买FUS,gas limit 请设置150000以上以确保交易正确打包</div>
+			  <div class="sub header">UTP众筹交易所3D智能合约入口,正式版<a href="http://chunchou.com">chunchou.com</a></div>
+			  <div class="sub header">网站访问量有可能下降，交易频率有可能减低，但以太坊智能合约永远不会被关停。</div>
+			  <div class="sub header">通过本网站的智能合约接口可安全的查看你的分红。</div>
+			  <div class="sub header">欢迎加入官方QQ群592486473，免费领取5Kyes,让我们一起成长。</div>
+			  <div class="sub header">官方电报群https://t.me/lasthero3d，欢迎加入</div>
+			  <div class="sub header">如果你第一次使用Metamask,<a href="https://ext.se.360.cn/webstore/detail/oabhjghcijfomlcmkjbbhakkdimfbemc">钱包下载地址</a>, 可查看 <a href="https://blog.csdn.net/niumenglong1/article/details/81274923">教程</a></div>
+			  <div class="sub header">直接将eth转入合约地址0x82d1a1546Ec0d9f883948D1a5d5CFa6408Ed75D1，</div>
+			  <div class="sub header">也可以直接购买UTP,gas limit 请设置150000以上以确保交易正确打包</div>
 			</h2>
 			</div>
 		</div>
@@ -175,7 +181,7 @@
 					<div class="two column row divided">
 						<div class="column buy">
 							<h2 class="ui aligned icon header">
-							  <img src="img/token1.jpg" alt="">
+							  <img src="img/buy.png" alt="">
 							  购买
 							</h2>
 							<p>单位 = eth </p>
@@ -184,7 +190,7 @@
 							<div class="ui centered grid">
 								<div class="row">
 									<div class="six wide column">
-										<span class="buyPrice">1234/FUS</span>
+										<span class="buyPrice">1234/UTP</span>
 										<form class="ui form">
 											<div class="field">
 												<input type="text" name="first-name" placeholder="0.05">
@@ -209,17 +215,17 @@
 						</div>
 						<div class="column sell">
 							<h2 class="ui aligned icon header">
-							  <img src="img/token1.jpg" alt="">
+							  <img src="img/sell.png" alt="">
 							  出售
 							</h2>
-							<p>单位 = FUS.</p>
+							<p>单位 = UTP.</p>
 							<p>由于以太坊网络拥堵，请使用2gwei以上的燃气价格。</p>
 							<p></p>
 							<div class="ui divider"></div>
 							<div class="ui centered grid">
 								<div class="row">
 									<div class="six wide column">
-										<span class="sellPrice">1234/FUS</span>
+										<span class="sellPrice">1234/UTP</span>
 										<form class="ui form">
 											<div class="field">
 												<input type="text" name="first-name" placeholder="25">
@@ -274,8 +280,8 @@
 														<b id="ethInContract">- 以太坊</b> 在合约中。
 													</span>
 													<span class="tokens">
-														<img class="ui medium circular image" src="https://fuschain.github.io/img/token.jpg">
-														<b id="tokensInCirculation">- FUS</b> 流通中。
+														<img class="ui medium circular image" src="https://media.discordapp.net/attachments/401301420575293440/415274787578052618/PowH_Logo_V2_Glow_Final_Concept_invert.png?width=522&height=576">
+														<b id="tokensInCirculation">- UTP</b> 流通中。
 													</span>
 											    </div>
 										    </div>
@@ -293,7 +299,7 @@
 										    <div class="row">
 										    	<div class="column eight wide app stats bubble" id="myTokens">
 													<div class="ui circular segment">
-														<span class="identifier">FUS <span class="soft">(Fuschain)</span></span>
+														<span class="identifier">UTP <span class="soft">(Utopia)</span></span>
 														<span class="count">-</span>
 														<span class="converted">(-美元)</span>
 
@@ -323,7 +329,7 @@
 										    	<div class="column">
 								    					<button id="reinvest" class="ui huge button">将分红再投资</button>
 								    	<button id="withdraw" class="ui huge button">分红提现</button>
-								    	
+								    	<a href="https://etherscan.io/address/0x82d1a1546Ec0d9f883948D1a5d5CFa6408Ed75D1" target="_new"><button class="ui huge button">查看合约</button></a>
 								    				</div>
 										    </div>
 										</div>
@@ -339,7 +345,7 @@
 							  <i class="circular inverted blue exchange alternate icon"></i>
 							  转移
 							</h2>
-							<p>单位 = FUS: 请注意，发送FUS之前请取回你的分红。!</p>
+							<p>单位 = UTP: 请注意，发送UTP之前请取回你的分红。!</p>
 							<div class="ui divider"></div>
 							<div class="ui centered grid">
 								<div class="row">
@@ -362,7 +368,7 @@
 								</div>
 								<div class="row no-padding">
 									<div class="column" style="text-align: center;">
-										<span class="approx">输入以太坊地址和FUS数量..</span>
+										<span class="approx">输入以太坊地址和UTP数量..</span>
 									</div>
 								</div>
 								<div class="row">
@@ -378,7 +384,7 @@
 					</div>
 				</div>
 				<div class="ui active inverted dimmer" id="loadingSpinner">
-				     <div class="ui massive text loader" id="loadingText">正在连接以太坊网络...<br>
+				     <div class="ui massive text loader" id="loadingText">正在连接 metamask...<br>
 					 <noscript>运行这个网页程序需要JavaScript。</noscript></div>
 				</div>
 			</div>
